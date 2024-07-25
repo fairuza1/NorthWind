@@ -1,15 +1,19 @@
 package kodlamaio.northwind.entities.concretes;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Table(name = "products")
+@AllArgsConstructor//parametreli constructor
+@NoArgsConstructor//parametresiz constructor
 
 public class Product {
     @Id
-    @GeneratedValue//bir bir artacağı söyleniyor
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//bir bir artacağı söyleniyor
     @Column(name = "product_id")
     private int id;
     @Column(name = "category_id")
@@ -23,18 +27,5 @@ public class Product {
     @Column(name = "quantity_per_unit")
     private String quantityPerUnit;
 
-    public Product(int id, int categoryId, String productName, double unitPrice, short unitsItyPerUnit) {
-        this.id = id;
-        this.categoryId = categoryId;
-        this.productName = productName;
-        this.unitPrice = unitPrice;
-        this.unitsItyPerUnit = unitsItyPerUnit;
-        this.quantityPerUnit = quantityPerUnit;
-    }
 
-
-    public Product() {
-
-
-    }
 }
